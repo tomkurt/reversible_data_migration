@@ -1,0 +1,29 @@
+require 'rubygems'
+require 'bundler/setup'
+require 'sqlite3'
+require 'active_record'
+require 'reversable_data_migration'
+require File.join(File.dirname(__FILE__), '..', 'init')
+
+RSpec.configure do |config|
+  # some (optional) config here
+end
+
+# connect to database.  This will create one if it doesn't exist
+MY_DB_NAME = ".test.db"
+MY_DB = SQLite3::Database.new(MY_DB_NAME)
+
+# get active record set up
+ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => MY_DB_NAME)
+
+# create your AR class
+class Product < ActiveRecord::Base
+
+end
+
+# do a quick pseudo migration.  This should only get executed on the first run
+if !Product.table_exists?
+  ActiveRecord::Base.connection.create_table(:products) do |t|
+    t.column :state, :string
+  end
+end
