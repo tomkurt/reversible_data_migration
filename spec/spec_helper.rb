@@ -6,11 +6,12 @@ require 'reversable_data_migration'
 require File.join(File.dirname(__FILE__), '..', 'init')
 
 RSpec.configure do |config|
-  # some (optional) config here
+  
 end
 
 # connect to database.  This will create one if it doesn't exist
 MY_DB_NAME = ".test.db"
+`rm #{MY_DB_NAME}`
 MY_DB = SQLite3::Database.new(MY_DB_NAME)
 
 # get active record set up
@@ -27,3 +28,5 @@ if !Product.table_exists?
     t.column :state, :string
   end
 end
+
+$stdout = File.new('/dev/null', 'w')

@@ -5,7 +5,7 @@ module ReversableDataMigration
   end
   
   def default_backupfile
-    Proc.new { return "#{location_backup_files}/#{name.underscore}.yml" }.call #name.underscore => name of migration 
+    "#{location_backup_files}/#{name.underscore}.yml" # name.underscore => name of migration 
   end
   
   def full_path_of file
@@ -21,6 +21,9 @@ module ReversableDataMigration
   end
   
   def backup data, file=nil
+    unless File.directory?(location_backup_files)
+      FileUtils.mkdir_p(location_backup_files)
+    end
     file = default_or_specific_file(file)
     puts "-- writing backup data (#{data.count} records) to #{file}"
     File.open( file , 'w' ) do |out|
@@ -43,9 +46,8 @@ module ReversableDataMigration
       object_hash.select{|k,v| k != :id}.each do |key, value|
         object.send("#{key}=", value)
       end
-      object.save(false)
+      object.save
     end
-    test_migration_record klass, test_record
   end
 
   def restore_batch
