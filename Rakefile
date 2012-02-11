@@ -5,15 +5,17 @@ require 'rspec/core/rake_task'
 
 task :default => :spec
 
-Echoe.new('reversable_data_migrations', '0.1.0') do |p|
-  p.description    = "Makes your data migrations reversable"
-  p.url            = "http://github.com/tomkurt/reversable_data_migrations"
-  p.author         = "Tom Maeckelberghe	"
-  p.email          = "tom.Maeckelberghe@gmail.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
-  p.development_dependencies = []
-end
-
-Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
-
 RSpec::Core::RakeTask.new('spec')
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gem.name = "reversable_data_migration"
+  gem.homepage = "http://github.com/tomkurt/reversable_data_migration"
+  gem.license = "MIT"
+  gem.summary = %Q{TODO: one-line summary of your gem}
+  gem.description = %Q{TODO: longer description of your gem}
+  gem.email = "tom.maeckelberghe@gmail.com"
+  gem.authors = ["Tom Maeckelberghe"]
+  # dependencies defined in Gemfile
+end
+Jeweler::RubygemsDotOrgTasks.new
