@@ -1,7 +1,7 @@
 module ReversableDataMigration
 
   def location_backup_files
-    "#{RAILS_ROOT}/db/migrate/backup_data"
+    "#{(Rails.version =~ /^2/) ? RAILS_ROOT : Rails.root.to_s}/db/migrate/backup_data"
   end
   
   def default_backupfile

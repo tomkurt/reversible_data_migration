@@ -2,12 +2,18 @@ require 'rubygems'
 require 'bundler/setup'
 require 'sqlite3'
 require 'active_record'
+class Rails
+  def self.version
+  	"2"
+  end
+end
 require 'reversable_data_migration'
-require File.join(File.dirname(__FILE__), '..', 'init')
 
 RSpec.configure do |config|
   
 end
+
+
 
 # connect to database.  This will create one if it doesn't exist
 MY_DB_NAME = ".test.db"
