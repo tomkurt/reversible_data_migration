@@ -13,7 +13,6 @@ Need to update a small amount of data in migration? But still want to make it re
 	    backup backup_data
 	    remove_column :products, :state
 	  end
-
 	  def self.down
 	    add_column :products, :state, :string
 	    restore Permission
