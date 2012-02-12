@@ -86,3 +86,9 @@ module ReversableDataMigration
   end
   
 end
+
+if Rails.version =~ /^2/
+  ActiveRecord::Migration.send(:extend, ReversableDataMigration)
+else
+  ActiveRecord::Migration.send(:include, ReversableDataMigration)
+end
