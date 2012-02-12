@@ -2,7 +2,7 @@
 
 Need to update a small amount of data in migration? But still want to make it reversable? Reversable Data Migration comes to the rescue.
 
-== Example usage
+## Example usage
 
 ```ruby
 class RemoveStateFromProduct < ActiveRecord::Migration
@@ -20,8 +20,8 @@ class RemoveStateFromProduct < ActiveRecord::Migration
   end
 end
 ```
-== Installing
+## Installing
 
     gem install reversable_data_migration
 
-== Rails 2 & 3 supported
+## Rails 2 & 3 supported
