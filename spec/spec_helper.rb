@@ -7,7 +7,7 @@ class Rails
   	"2"
   end
 end
-require 'reversable_data_migration'
+require 'reversible_data_migration'
 
 RSpec.configure do |config|
   

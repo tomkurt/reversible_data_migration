@@ -1,9 +1,9 @@
 require 'spec_helper'
-module ReversableDataMigration
+module ReversibleDataMigration
   RAILS_ROOT = File.dirname(__FILE__)
 end 
 
-describe ReversableDataMigration do
+describe ReversibleDataMigration do
   
   before :each do
     Product.delete_all

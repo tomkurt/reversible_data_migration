@@ -1,4 +1,4 @@
-module ReversableDataMigration
+module ReversibleDataMigration
 
   def location_backup_files
     "#{(Rails.version =~ /^2/) ? RAILS_ROOT : Rails.root.to_s}/db/migrate/backup_data"
@@ -88,7 +88,7 @@ module ReversableDataMigration
 end
 
 if Rails.version =~ /^2/
-  ActiveRecord::Migration.send(:extend, ReversableDataMigration)
+  ActiveRecord::Migration.send(:extend, ReversibleDataMigration)
 else
-  ActiveRecord::Migration.send(:include, ReversableDataMigration)
+  ActiveRecord::Migration.send(:include, ReversibleDataMigration)
 end
