@@ -15,7 +15,7 @@ Need to update a small amount of data in migration? But still want to make it re
     end
     def self.down
       add_column :products, :state, :string
-      restore Permission
+      restore Product
     end
   end
 
